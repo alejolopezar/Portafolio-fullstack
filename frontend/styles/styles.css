@@ -1,0 +1,696 @@
+/* =========================================
+RESET
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+/* =========================================
+VARIABLES
+========================================= */
+
+:root {
+
+--background-primary: #0f172a;
+--background-secondary: #111827;
+--background-card: #1e293b;
+
+--text-primary: #f8fafc;
+--text-secondary: #94a3b8;
+--text-muted: #64748b;
+
+--accent-primary: #38bdf8;
+--accent-secondary: #818cf8;
+
+--border-color: #334155;
+
+--max-width: 1200px;
+
+}
+
+/* =========================================
+BODY
+========================================= */
+
+body {
+
+font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+background:
+    linear-gradient(
+        135deg,
+        var(--background-primary),
+        var(--background-secondary)
+    );
+
+color: var(--text-primary);
+
+min-height: 100vh;
+
+line-height: 1.6;
+
+}
+
+/* =========================================
+HEADER
+========================================= */
+
+.header {
+
+position: sticky;
+
+top: 0;
+
+z-index: 1000;
+
+background-color: rgba(15, 23, 42, 0.9);
+
+backdrop-filter: blur(12px);
+
+border-bottom: 1px solid var(--border-color);
+
+}
+
+.navbar {
+
+max-width: var(--max-width);
+
+margin: 0 auto;
+
+padding: 1.25rem 2rem;
+
+display: flex;
+
+justify-content: space-between;
+
+align-items: center;
+
+}
+
+.logo {
+
+font-size: 1.25rem;
+
+font-weight: 700;
+
+color: var(--text-primary);
+
+text-decoration: none;
+
+letter-spacing: -0.5px;
+
+}
+
+.logo::before {
+
+content: "< ";
+
+color: var(--accent-primary);
+
+}
+
+.logo::after {
+
+content: " />";
+
+color: var(--accent-primary);
+
+}
+
+.nav-list {
+
+display: flex;
+
+align-items: center;
+
+gap: 2rem;
+
+list-style: none;
+
+}
+
+.nav-list a {
+
+color: var(--text-secondary);
+
+text-decoration: none;
+
+font-size: 0.95rem;
+
+transition: color 0.3s ease;
+
+}
+
+.nav-list a:hover,
+
+.nav-list a.active {
+
+color: var(--accent-primary);
+
+}
+
+/* =========================================
+MAIN
+========================================= */
+
+main {
+
+min-height: calc(100vh - 140px);
+
+}
+
+/* =========================================
+HERO SECTION
+========================================= */
+
+.hero-section {
+
+max-width: var(--max-width);
+
+margin: 0 auto;
+
+padding: 7rem 2rem 5rem;
+
+}
+
+.hero-content {
+
+max-width: 750px;
+
+}
+
+.section-label {
+
+color: var(--accent-primary);
+
+font-size: 0.85rem;
+
+font-weight: 700;
+
+letter-spacing: 2px;
+
+margin-bottom: 1.25rem;
+
+}
+
+.hero-section h1 {
+
+font-size: clamp(2.5rem, 6vw, 5rem);
+
+line-height: 1.05;
+
+letter-spacing: -2px;
+
+margin-bottom: 1.5rem;
+
+}
+
+.hero-description {
+
+max-width: 650px;
+
+color: var(--text-secondary);
+
+font-size: 1.15rem;
+
+}
+
+/* =========================================
+PORTFOLIO SECTION
+========================================= */
+
+.portfolio-section {
+
+max-width: var(--max-width);
+
+margin: 0 auto;
+
+padding: 0 2rem 6rem;
+
+}
+
+/* =========================================
+FILTER NAVIGATION
+========================================= */
+
+.section-navigation {
+
+display: flex;
+
+gap: 1rem;
+
+margin-bottom: 4rem;
+
+border-bottom: 1px solid var(--border-color);
+
+}
+
+.filter-button {
+
+background: transparent;
+
+border: none;
+
+color: var(--text-secondary);
+
+padding: 1rem 0.5rem;
+
+margin-right: 1.5rem;
+
+font-size: 1rem;
+
+cursor: pointer;
+
+position: relative;
+
+transition: color 0.3s ease;
+
+}
+
+.filter-button:hover {
+
+color: var(--text-primary);
+
+}
+
+.filter-button.active {
+
+color: var(--accent-primary);
+
+}
+
+.filter-button.active::after {
+
+content: "";
+
+position: absolute;
+
+bottom: -1px;
+
+left: 0;
+
+width: 100%;
+
+height: 2px;
+
+background-color: var(--accent-primary);
+
+}
+
+/* =========================================
+CONTENT SECTIONS
+========================================= */
+
+.content-section {
+
+display: none;
+
+}
+
+.content-section.active {
+
+display: block;
+
+}
+
+.section-header {
+
+margin-bottom: 2.5rem;
+
+}
+
+.section-header h2 {
+
+font-size: 2rem;
+
+margin-bottom: 0.5rem;
+
+}
+
+.section-header p {
+
+color: var(--text-secondary);
+
+}
+
+/* =========================================
+CARDS CONTAINER
+========================================= */
+
+.cards-container {
+
+display: grid;
+
+grid-template-columns:
+    repeat(
+        auto-fit,
+        minmax(300px, 1fr)
+    );
+
+gap: 2rem;
+
+}
+
+/* =========================================
+PROJECT CARD
+========================================= */
+
+.project-card,
+
+.certification-card {
+
+background-color: var(--background-card);
+
+border: 1px solid var(--border-color);
+
+border-radius: 12px;
+
+overflow: hidden;
+
+transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+}
+
+.project-card:hover,
+
+.certification-card:hover {
+
+transform: translateY(-8px);
+
+border-color: var(--accent-primary);
+
+box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.25);
+
+}
+
+/* =========================================
+PROJECT IMAGE
+========================================= */
+
+.card-image {
+
+height: 220px;
+
+background:
+
+    linear-gradient(
+        135deg,
+        var(--accent-secondary),
+        var(--accent-primary)
+    );
+
+display: flex;
+
+justify-content: center;
+
+align-items: center;
+
+}
+
+.card-image span {
+
+font-size: 1rem;
+
+font-weight: 600;
+
+color: white;
+
+opacity: 0.9;
+
+}
+
+/* =========================================
+CARD CONTENT
+========================================= */
+
+.card-content {
+
+padding: 1.75rem;
+
+}
+
+.card-category {
+
+color: var(--accent-primary);
+
+font-size: 0.75rem;
+
+font-weight: 700;
+
+text-transform: uppercase;
+
+letter-spacing: 1px;
+
+margin-bottom: 0.75rem;
+
+}
+
+.card-content h3 {
+
+font-size: 1.4rem;
+
+margin-bottom: 0.75rem;
+
+}
+
+.card-content p {
+
+color: var(--text-secondary);
+
+margin-bottom: 1.25rem;
+
+}
+
+/* =========================================
+TECHNOLOGIES
+========================================= */
+
+.technologies {
+
+display: flex;
+
+flex-wrap: wrap;
+
+gap: 0.5rem;
+
+margin-bottom: 1.5rem;
+
+}
+
+.technologies span {
+
+background-color: rgba(56, 189, 248, 0.1);
+
+border: 1px solid rgba(56, 189, 248, 0.25);
+
+color: var(--accent-primary);
+
+padding: 0.35rem 0.7rem;
+
+border-radius: 6px;
+
+font-size: 0.75rem;
+
+}
+
+/* =========================================
+CARD LINKS
+========================================= */
+
+.card-links {
+
+display: flex;
+
+gap: 1.5rem;
+
+}
+
+.card-links a,
+
+.certificate-link {
+
+color: var(--text-primary);
+
+font-size: 0.9rem;
+
+font-weight: 600;
+
+text-decoration: none;
+
+transition: color 0.3s ease;
+
+}
+
+.card-links a:hover,
+
+.certificate-link:hover {
+
+color: var(--accent-primary);
+
+}
+
+/* =========================================
+CERTIFICATION CARD
+========================================= */
+
+.certification-card {
+
+display: flex;
+
+align-items: flex-start;
+
+padding: 1.75rem;
+
+gap: 1.5rem;
+
+}
+
+.certification-icon {
+
+min-width: 60px;
+
+height: 60px;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+border-radius: 12px;
+
+background-color: rgba(129, 140, 248, 0.15);
+
+font-size: 1.75rem;
+
+}
+
+.certification-card .card-content {
+
+padding: 0;
+
+}
+
+.certification-date {
+
+color: var(--text-muted);
+
+font-size: 0.9rem;
+
+}
+
+.certificate-link {
+
+display: inline-block;
+
+margin-top: 0.5rem;
+
+}
+
+/* =========================================
+FOOTER
+========================================= */
+
+.footer {
+
+border-top: 1px solid var(--border-color);
+
+text-align: center;
+
+padding: 2rem;
+
+color: var(--text-muted);
+
+font-size: 0.85rem;
+
+}
+
+/* =========================================
+RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 768px) {
+
+.navbar {
+
+    padding: 1rem 1.25rem;
+
+}
+
+
+.nav-list {
+
+    gap: 1rem;
+
+}
+
+
+.nav-list a {
+
+    font-size: 0.85rem;
+
+}
+
+
+.hero-section {
+
+    padding:
+
+        5rem
+        1.25rem
+        3rem;
+
+}
+
+
+.hero-section h1 {
+
+    font-size: 3rem;
+
+}
+
+
+.portfolio-section {
+
+    padding:
+
+        0
+        1.25rem
+        4rem;
+
+}
+
+
+.section-navigation {
+
+    overflow-x: auto;
+
+}
+
+
+.cards-container {
+
+    grid-template-columns: 1fr;
+
+}
+
+
+.certification-card {
+
+    flex-direction: column;
+
+}
+
+}
